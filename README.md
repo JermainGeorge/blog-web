@@ -1,0 +1,2 @@
+# blog-web
+Django blog 
