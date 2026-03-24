@@ -1,5 +1,4 @@
 {% extends "blog/base.html" %}
 {%block content %}
-   <h1>Register page!</h1>
-   <p>Sign in and join the community</p>
+   <div><form method=" post ">{% csrf-token %}</form></div>
 {%endblock content%}
