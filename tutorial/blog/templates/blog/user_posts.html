@@ -1,0 +1,70 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<!-- 🔹 PROFILE HEADER -->
+<div class="content-section text-center">
+  <img 
+    class="rounded-circle mb-3" 
+    src="{{ view_user.profile.image.url }}" 
+    style="width: 120px; height: 120px; object-fit: cover;"
+  >
+
+  <h3 class="mb-1">@{{ view_user.username }}</h3>
+
+  {% if view_user.profile.bio %}
+    <p class="text-muted">{{ view_user.profile.bio }}</p>
+  {% endif %}
+
+  <!-- 🔸 Stats (simple version) -->
+  <div class="d-flex justify-content-center gap-4 mt-3">
+    <div>
+      <strong>{{ posts|length }}</strong><br>
+      <small class="text-muted">Posts</small>
+    </div>
+    <div>
+      <strong>--</strong><br>
+      <small class="text-muted">Followers</small>
+    </div>
+    <div>
+      <strong>--</strong><br>
+      <small class="text-muted">Following</small>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- 🔹 POSTS SECTION -->
+<h5 class="mb-3">Posts</h5>
+
+{% for post in posts %}
+  <article class="content-section mb-4 p-3 rounded" style="border: 1px solid #eaeaea;">
+    
+    <!-- Post Header -->
+    <div class="d-flex align-items-center mb-2">
+      <img 
+        class="rounded-circle me-2" 
+        src="{{ post.author.profile.image.url }}" 
+        style="width: 40px; height: 40px; object-fit: cover;"
+      >
+
+      <div>
+        <a href="{% url 'user-posts' post.author.username %}" class="fw-bold text-dark">
+          {{ post.author }}
+        </a><br>
+        <small class="text-muted">
+          {{ post.date_posted|date:"d M Y" }}
+        </small>
+      </div>
+    </div>
+
+    <!-- Post Content -->
+    <h5 class="mb-1">{{ post.title }}</h5>
+    <p class="mb-0">{{ post.content }}</p>
+
+  </article>
+{% empty %}
+  <p class="text-muted">This user has no posts yet.</p>
+{% endfor %}
+
+{% endblock %}
