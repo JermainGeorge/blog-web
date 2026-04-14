@@ -4,7 +4,7 @@
 <!-- 🔹 PROFILE HEADER -->
 <div class="content-section text-center">
   <img 
-    class="rounded-circle mb-3" 
+    class="rounded-circle mb-3 ml-3" 
     src="{{ view_user.profile.image.url }}" 
     style="width: 120px; height: 120px; object-fit: cover;"
   >
@@ -19,15 +19,15 @@
   <div class="d-flex justify-content-center gap-4 mt-3">
     <div>
       <strong>{{ posts|length }}</strong><br>
-      <small class="text-muted">Posts</small>
+      <small class="text-muted mx-2 ">Posts</small>
     </div>
     <div>
       <strong>--</strong><br>
-      <small class="text-muted">Followers</small>
+      <small class="text-muted mx-2 ">Followers</small>
     </div>
     <div>
       <strong>--</strong><br>
-      <small class="text-muted">Following</small>
+      <small class="text-muted mx-auto ">Following</small>
     </div>
   </div>
 </div>
@@ -48,7 +48,7 @@
         style="width: 40px; height: 40px; object-fit: cover;"
       >
 
-      <div>
+      <div class = "ml-2 ">
         <a href="{% url 'user-posts' post.author.username %}" class="fw-bold text-dark">
           {{ post.author }}
         </a><br>
