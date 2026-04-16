@@ -5,14 +5,25 @@ from django.contrib import messages
 from .forms import UserRegisterform, UserUpdateForm, ProfileUpdateForm
 
 
+
+from django.core.mail import send_mail
+from django.conf import settings
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterform(request.POST)
         if form.is_valid():
             #this will creat a new user from the form in the front end 
-            form.save()
+            user =form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Ure account has been created you are now able to log in!')
+            send_mail(
+                subject='Welcome to the App',
+                message=f'Hi {user.username}, your account has been created successfully.',
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
             return redirect('users-login')
     else:
         form = UserRegisterform()
