@@ -11,10 +11,10 @@
     <link rel="stylesheet" text=" text/css " href="{% static 'blog/main.css'%}">
         {% if title %}
          <!--use title from variables-->
-        <title>Django Blog - {{title}}</title>
+        <title>EchoSpace - {{title}}</title>
         {% else %}
         <!--when not provider with a title from variables-->
-        <title>Django Blog </title> 
+        <title>EchoSpace</title> 
         {% endif %}
       
 </head>
@@ -22,7 +22,7 @@
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <div class="container">
-        <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Django Blog</a>
+        <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">EchoSpace</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="{% url 'blog-about' %}navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
